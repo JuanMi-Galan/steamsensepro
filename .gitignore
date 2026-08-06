@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# macOS
+.DS_Store
+
+# Project data files
+data/
+
+# Model files
+modelos_1/
+modelos_2/
+modelos_clustering/
+*.pkl

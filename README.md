@@ -160,7 +160,7 @@ Ver archivo [LICENSE](LICENSE)
 
 ## 👤 Autor
 
-Juan Miguel Galán - [GitHub](https://github.com/JuanMi-Galan)
+Juan Miguel Galan Olivares - [GitHub](https://github.com/JuanMi-Galan)
 
 ## 🙏 Agradecimientos
 

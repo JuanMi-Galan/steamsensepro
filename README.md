@@ -76,28 +76,16 @@ Panel interactivo al estilo Steam que utiliza Machine Learning para recomendar j
 
 ## ☁️ Despliegue en Streamlit Cloud
 
-1. **Fork el repositorio** en tu cuenta de GitHub
+Para desplegar en Streamlit Cloud, sigue la guía detallada: [STREAMLIT_DEPLOYMENT.md](STREAMLIT_DEPLOYMENT.md)
 
-2. **Subir modelos a Google Drive** siguiendo [GOOGLE_DRIVE_SETUP.md](GOOGLE_DRIVE_SETUP.md)
+**Resumen rápido:**
 
-3. **Conectar con Streamlit Cloud**
-   - Ve a [share.streamlit.io](https://share.streamlit.io)
-   - Conecta tu repositorio
-   - Selecciona `main.py` como archivo principal
+1. Sube modelos a Google Drive ([guía aquí](GOOGLE_DRIVE_SETUP.md))
+2. Ve a [share.streamlit.io](https://share.streamlit.io) y conecta tu repositorio
+3. Configura los Secrets con tus API keys y los IDs de Google Drive
+4. ¡Deploy! 🚀
 
-4. **Configurar Secrets**
-   
-   En la configuración de tu app en Streamlit Cloud, agrega en **Secrets**:
-   ```toml
-   STEAM_API_KEY = "tu_clave_aqui"
-   OPENAI_API_KEY = "tu_clave_aqui"
-   GDRIVE_MODEL1_ID = "id_del_archivo"
-   GDRIVE_MODEL2_ID = "id_del_archivo"
-   GDRIVE_PIPELINE_ID = "id_del_archivo"
-   GDRIVE_GMM_ID = "id_del_archivo"
-   ```
-
-5. **Deploy** 🚀
+Consulta [`.streamlit.secrets.example.toml`](.streamlit.secrets.example.toml) para ver el formato exacto de los Secrets.
 
 ## 📁 Estructura del Proyecto
 

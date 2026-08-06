@@ -14,12 +14,17 @@ import pandas as pd
 import streamlit as st
 
 from feature_engineering import FEATURES_MODELO1, FEATURES_MODELO2, FEATURES_CLUSTER
-from download_models import ensure_models_downloaded
-
-# Asegurar que los modelos estén disponibles antes de cualquier operación
-ensure_models_downloaded()
 
 BASE_DIR = Path(__file__).resolve().parent
+
+# Intentar descargar modelos si no existen (en Streamlit Cloud especialmente)
+# No fallar inmediatamente, los errores se manejarán al intentar cargar cada modelo
+try:
+    from download_models import ensure_models_downloaded
+    ensure_models_downloaded(raise_on_missing=False)
+except Exception as e:
+    import warnings
+    warnings.warn(f"No se pudieron verificar/descargar modelos: {e}")
 
 MODEL1_PATH = BASE_DIR / "modelos_1" / "mejor_modelo1_global.pkl"
 MODEL2_PATH = BASE_DIR / "modelos_2" / "mejor_modelo2_global.pkl"

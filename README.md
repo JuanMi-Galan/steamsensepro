@@ -15,6 +15,7 @@ Panel interactivo al estilo Steam que utiliza Machine Learning para recomendar j
 - Steam API Key ([obtén una aquí](https://steamcommunity.com/dev/apikey))
 - OpenAI API Key (para el asistente conversacional)
 - Cuenta de Google Drive (para almacenar modelos)
+- Data para no ejecutar API: [descarga data](https://drive.google.com/drive/folders/1aGecoOPu6_xZ3pWk1_MeJ7YduDjcNnan?usp=sharing)
 
 ## 🛠️ Instalación Local
 

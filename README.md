@@ -62,7 +62,15 @@ Panel interactivo al estilo Steam que utiliza Machine Learning para recomendar j
    ```
 
 5. **Ejecutar la aplicación**
+   
+   Con uv (recomendado):
    ```bash
+   uv run streamlit run main.py
+   ```
+   
+   O si prefieres activar el entorno virtual:
+   ```bash
+   source .venv/bin/activate  # En Windows: .venv\Scripts\activate
    streamlit run main.py
    ```
 
@@ -115,7 +123,7 @@ steamsensepro/
 Para verificar que los modelos se descargan correctamente:
 
 ```bash
-python download_models.py
+uv run python download_models.py
 ```
 
 Deberías ver:

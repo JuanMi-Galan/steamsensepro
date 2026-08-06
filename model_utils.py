@@ -66,24 +66,62 @@ CLUSTER_PROFILES = {
 
 @st.cache_resource(show_spinner=False)
 def load_pickle(path: str):
-    with open(path, "rb") as f:
-        return pickle.load(f)
+    """Carga un archivo pickle con manejo de errores mejorado."""
+    file_path = Path(path)
+    
+    if not file_path.exists():
+        error_msg = (
+            f"❌ Archivo no encontrado: {file_path.name}\n\n"
+            f"Ruta completa: {file_path}\n\n"
+            f"Posibles causas:\n"
+            f"1. Los modelos no se han descargado desde Google Drive\n"
+            f"2. Las variables GDRIVE_*_ID no están configuradas en Streamlit Secrets\n"
+            f"3. Los archivos en Google Drive no tienen permisos públicos\n\n"
+            f"Consulta STREAMLIT_DEPLOYMENT.md para más información."
+        )
+        raise FileNotFoundError(error_msg)
+    
+    try:
+        with open(path, "rb") as f:
+            return pickle.load(f)
+    except Exception as e:
+        raise RuntimeError(f"Error al cargar {file_path.name}: {e}")
 
 
 def get_model1():
-    return load_pickle(str(MODEL1_PATH))
+    """Carga el modelo de predicción pre-compra."""
+    try:
+        return load_pickle(str(MODEL1_PATH))
+    except Exception as e:
+        st.error(f"⚠️ No se pudo cargar el modelo 1: {e}")
+        raise
 
 
 def get_model2():
-    return load_pickle(str(MODEL2_PATH))
+    """Carga el modelo de predicción post-compra."""
+    try:
+        return load_pickle(str(MODEL2_PATH))
+    except Exception as e:
+        st.error(f"⚠️ No se pudo cargar el modelo 2: {e}")
+        raise
 
 
 def get_cluster_pipeline():
-    return load_pickle(str(CLUSTER_PIPE_PATH))
+    """Carga el pipeline de preprocesamiento para clustering."""
+    try:
+        return load_pickle(str(CLUSTER_PIPE_PATH))
+    except Exception as e:
+        st.error(f"⚠️ No se pudo cargar el pipeline de clustering: {e}")
+        raise
 
 
 def get_cluster_model():
-    return load_pickle(str(CLUSTER_MODEL_PATH))
+    """Carga el modelo GMM de clustering."""
+    try:
+        return load_pickle(str(CLUSTER_MODEL_PATH))
+    except Exception as e:
+        st.error(f"⚠️ No se pudo cargar el modelo de clustering: {e}")
+        raise
 
 
 def predict_abandono_precompra(features_df: pd.DataFrame) -> np.ndarray:

@@ -225,6 +225,9 @@ data/
 # Except critical catalog file needed by the app
 !data/u_rpg_juegos_duraciones.csv
 
+# Report files
+reportes/
+
 # Model files
 modelos_1/
 modelos_2/

@@ -226,6 +226,7 @@ data/
 !data/u_rpg_juegos_duraciones.csv
 
 # Report files
+reporte/
 reportes/
 
 # Model files

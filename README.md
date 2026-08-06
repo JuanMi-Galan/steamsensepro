@@ -1,1 +1,173 @@
-# steamsensepro
+# SteamSense Pro 🎮
+
+Panel interactivo al estilo Steam que utiliza Machine Learning para recomendar juegos RPG, predecir riesgo de abandono y clasificar perfiles de jugadores.
+
+## 🚀 Características
+
+- **Recomendaciones de Juegos**: Modelo de precompra que sugiere RPGs con menor riesgo de abandono
+- **Análisis de Riesgo**: Modelo de postcompra que evalúa tus juegos actuales
+- **Perfil de Jugador**: Clustering que identifica tu estilo de juego
+- **Asistente IA**: Chatbot conversacional que conoce tu contexto de Steam
+
+## 📋 Requisitos
+
+- Python 3.9+
+- Steam API Key ([obtén una aquí](https://steamcommunity.com/dev/apikey))
+- OpenAI API Key (para el asistente conversacional)
+- Cuenta de Google Drive (para almacenar modelos)
+
+## 🛠️ Instalación Local
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/JuanMi-Galan/steamsensepro.git
+   cd steamsensepro
+   ```
+
+2. **Instalar dependencias con uv** (recomendado)
+   ```bash
+   uv sync
+   ```
+   
+   O con pip:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configurar modelos en Google Drive**
+   
+   Los modelos son demasiado grandes para GitHub, así que debes subirlos a Google Drive:
+   
+   ```bash
+   python setup_gdrive.py
+   ```
+   
+   Este script te guiará paso a paso. Alternativamente, consulta [GOOGLE_DRIVE_SETUP.md](GOOGLE_DRIVE_SETUP.md) para instrucciones detalladas.
+
+4. **Configurar variables de entorno**
+   
+   Copia el archivo de ejemplo y edítalo:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edita `.env` con tus claves:
+   ```env
+   STEAM_API_KEY=tu_clave_aqui
+   OPENAI_API_KEY=tu_clave_aqui
+   GDRIVE_MODEL1_ID=id_del_archivo
+   GDRIVE_MODEL2_ID=id_del_archivo
+   GDRIVE_PIPELINE_ID=id_del_archivo
+   GDRIVE_GMM_ID=id_del_archivo
+   ```
+
+5. **Ejecutar la aplicación**
+   ```bash
+   streamlit run main.py
+   ```
+
+## ☁️ Despliegue en Streamlit Cloud
+
+1. **Fork el repositorio** en tu cuenta de GitHub
+
+2. **Subir modelos a Google Drive** siguiendo [GOOGLE_DRIVE_SETUP.md](GOOGLE_DRIVE_SETUP.md)
+
+3. **Conectar con Streamlit Cloud**
+   - Ve a [share.streamlit.io](https://share.streamlit.io)
+   - Conecta tu repositorio
+   - Selecciona `main.py` como archivo principal
+
+4. **Configurar Secrets**
+   
+   En la configuración de tu app en Streamlit Cloud, agrega en **Secrets**:
+   ```toml
+   STEAM_API_KEY = "tu_clave_aqui"
+   OPENAI_API_KEY = "tu_clave_aqui"
+   GDRIVE_MODEL1_ID = "id_del_archivo"
+   GDRIVE_MODEL2_ID = "id_del_archivo"
+   GDRIVE_PIPELINE_ID = "id_del_archivo"
+   GDRIVE_GMM_ID = "id_del_archivo"
+   ```
+
+5. **Deploy** 🚀
+
+## 📁 Estructura del Proyecto
+
+```
+steamsensepro/
+├── main.py                     # Aplicación principal de Streamlit
+├── model_utils.py              # Carga y predicción de modelos
+├── feature_engineering.py      # Ingeniería de características
+├── steam_client.py             # Cliente API de Steam
+├── assistant.py                # Asistente conversacional
+├── download_models.py          # Descarga automática de modelos
+├── setup_gdrive.py             # Script de configuración
+├── requirements.txt            # Dependencias
+├── pyproject.toml              # Configuración del proyecto
+├── .env.example                # Plantilla de variables de entorno
+├── GOOGLE_DRIVE_SETUP.md       # Guía de configuración de Drive
+├── data/                       # Datos (no en git)
+└── modelos_*/                  # Modelos entrenados (no en git)
+```
+
+## 🧪 Testing
+
+Para verificar que los modelos se descargan correctamente:
+
+```bash
+python download_models.py
+```
+
+Deberías ver:
+```
+📥 Descargando 4 archivo(s) desde Google Drive...
+✓ mejor_modelo1_global.pkl descargado
+✓ mejor_modelo2_global.pkl descargado
+✓ preprocessing_pipeline.pkl descargado
+✓ gmm_v2.pkl descargado
+✓ Todos los modelos descargados exitosamente
+```
+
+## 📊 Modelos
+
+- **Modelo 1 (Precompra)**: Predice probabilidad de abandono antes de comprar
+- **Modelo 2 (Postcompra)**: Predice probabilidad de abandono en juegos poseídos
+- **Clustering GMM**: Clasifica jugadores en 3 perfiles (Dedicado, Coleccionista Dormido, Coleccionista Masivo)
+
+Los modelos fueron entrenados en los notebooks:
+- `01_obtencion_informacion_apis.ipynb` - Obtención de datos de Steam
+- `02_eda_e_ingenieria_variables.ipynb` - EDA y entrenamiento de modelos
+
+## 🔧 Desarrollo
+
+Para contribuir o modificar:
+
+1. Instala dependencias de desarrollo:
+   ```bash
+   uv sync --dev
+   ```
+
+2. Entrena tus propios modelos ejecutando los notebooks
+
+3. Los modelos entrenados se guardan en `modelos_*/`
+
+## 📝 Notas
+
+- Los archivos de datos y modelos están en `.gitignore` por su tamaño
+- Los modelos se descargan automáticamente al iniciar la app
+- La primera ejecución puede tardar unos minutos en descargar los modelos
+- En Streamlit Cloud, los modelos se descargan en cada reinicio
+
+## 📄 Licencia
+
+Ver archivo [LICENSE](LICENSE)
+
+## 👤 Autor
+
+Juan Miguel Galán - [GitHub](https://github.com/JuanMi-Galan)
+
+## 🙏 Agradecimientos
+
+- Steam API para los datos de juegos
+- OpenAI para el asistente conversacional
+- Scikit-learn, LightGBM, XGBoost para los modelos ML

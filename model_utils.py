@@ -3,6 +3,8 @@ Carga de modelos entrenados en 05_eda_e_ingenieria_variables.ipynb y wrappers
 de predicción. Los modelos son Pipelines de sklearn (ColumnTransformer ->
 VarianceThreshold -> SelectKBest -> LGBMClassifier/etc.), por lo que basta con
 pasarles un DataFrame con las columnas de entrenamiento en cualquier orden.
+
+Los modelos se descargan automáticamente desde Google Drive si no existen localmente.
 """
 from pathlib import Path
 import pickle
@@ -12,6 +14,10 @@ import pandas as pd
 import streamlit as st
 
 from feature_engineering import FEATURES_MODELO1, FEATURES_MODELO2, FEATURES_CLUSTER
+from download_models import ensure_models_downloaded
+
+# Asegurar que los modelos estén disponibles antes de cualquier operación
+ensure_models_downloaded()
 
 BASE_DIR = Path(__file__).resolve().parent
 

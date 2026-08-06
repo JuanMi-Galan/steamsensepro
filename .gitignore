@@ -220,8 +220,10 @@ __marimo__/
 # macOS
 .DS_Store
 
-# Project data files
+# Project data files (excluded from git)
 data/
+# Except critical catalog file needed by the app
+!data/u_rpg_juegos_duraciones.csv
 
 # Model files
 modelos_1/

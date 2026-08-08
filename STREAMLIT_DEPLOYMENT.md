@@ -45,7 +45,7 @@ STEAM_API_KEY = "TU_STEAM_API_KEY_AQUI"
 # OpenAI API  
 OPENAI_API_KEY = "TU_OPENAI_API_KEY_AQUI"
 
-# Google Drive IDs para descargar modelos
+# Google Drive IDs para descargar modelos (modelos reales)
 GDRIVE_MODEL1_ID = "1yS6ZMXBx0yxcjCJDWfHIsit9NPPLFP4_"
 GDRIVE_MODEL2_ID = "1Y4-fzFUfJzoXE-NFsznV7HwSLFK4mOzj"
 GDRIVE_PIPELINE_ID = "1l2k3kC6Qcj77jKizXcIDTbdIqQuewq06"

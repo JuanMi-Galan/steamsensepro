@@ -56,10 +56,10 @@ Panel interactivo al estilo Steam que utiliza Machine Learning para recomendar j
    ```env
    STEAM_API_KEY=tu_clave_aqui
    OPENAI_API_KEY=tu_clave_aqui
-   GDRIVE_MODEL1_ID=id_del_archivo
-   GDRIVE_MODEL2_ID=id_del_archivo
-   GDRIVE_PIPELINE_ID=id_del_archivo
-   GDRIVE_GMM_ID=id_del_archivo
+   GDRIVE_MODEL1_ID = "1yS6ZMXBx0yxcjCJDWfHIsit9NPPLFP4_"
+   GDRIVE_MODEL2_ID = "1Y4-fzFUfJzoXE-NFsznV7HwSLFK4mOzj"
+   GDRIVE_PIPELINE_ID = "1l2k3kC6Qcj77jKizXcIDTbdIqQuewq06"
+   GDRIVE_GMM_ID = "1mcsLM1udGvw8nIG67qHEk4P1OMhCz0vH"
    ```
 
 5. **Ejecutar la aplicación**
@@ -101,10 +101,10 @@ steamsensepro/
 ├── setup_gdrive.py             # Script de configuración
 ├── requirements.txt            # Dependencias
 ├── pyproject.toml              # Configuración del proyecto
-├── .env.example                # Plantilla de variables de entorno
+├── .env                       # Variables de entorno
 ├── GOOGLE_DRIVE_SETUP.md       # Guía de configuración de Drive
-├── data/                       # Datos (no en git)
-└── modelos_*/                  # Modelos entrenados (no en git)
+├── data/                       # Datos (no en git, Drive: [data](https://drive.google.com/drive/folders/1aGecoOPu6_xZ3pWk1_MeJ7YduDjcNnan?usp=sharing))
+└── modelos_*/                  # Modelos entrenados (no en git, Drive: [](https://drive.google.com/drive/folders/1lMs_bK5Yhe6FzYRvg_6yFYBdS7QGnOpj?usp=sharing))
 ```
 
 ## 🧪 Testing

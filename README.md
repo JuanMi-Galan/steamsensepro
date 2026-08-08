@@ -103,9 +103,13 @@ steamsensepro/
 ├── pyproject.toml              # Configuración del proyecto
 ├── .env                       # Variables de entorno
 ├── GOOGLE_DRIVE_SETUP.md       # Guía de configuración de Drive
-├── data/                       # Datos (no en git, Drive: [data](https://drive.google.com/drive/folders/1aGecoOPu6_xZ3pWk1_MeJ7YduDjcNnan?usp=sharing))
-└── modelos_*/                  # Modelos entrenados (no en git, Drive: [](https://drive.google.com/drive/folders/1lMs_bK5Yhe6FzYRvg_6yFYBdS7QGnOpj?usp=sharing))
+├── data/                       # Datos (no en git, Drive: 
+└── modelos_*/                  # Modelos entrenados (no en git, Drive: 
 ```
+
+Link de los modelos y la carpeta data, donde se tiene la información para entrenar los modelos: [modelos_data](https://drive.google.com/drive/folders/1lMs_bK5Yhe6FzYRvg_6yFYBdS7QGnOpj?usp=sharing)
+
+
 
 ## 🧪 Testing
 
